@@ -1,14 +1,10 @@
-import {
-  collection,
-  getDocs,
-  query,
-  where,
-} from "firebase/firestore";
+import { collection, getDocs, query, where } from "firebase/firestore";
 import React, { useState } from "react";
 import { auth, db } from "../firebase-config";
 import Card from "./Card";
 
 export default function Candidat() {
+  const [showLodadingSpinner, setShowLodadingSpinner] = useState(false);
   const [codeDonne, setCodeDonne] = useState("");
   const [avisRecupere, setAvisRecupere] = useState([]);
   const [candidatRecupere, setCandidatRecupere] = useState([
@@ -22,8 +18,8 @@ export default function Candidat() {
   ]);
 
   const getAvis = async () => {
-    
     try {
+      setShowLodadingSpinner(true);
       const collec = collection(db, "avis");
       const q = query(collec, where("code_candidat", "==", codeDonne));
       const querySnapshot = await getDocs(q);
@@ -50,6 +46,7 @@ export default function Candidat() {
     } catch (error) {
       console.error(error);
     }
+    setShowLodadingSpinner(false);
   };
 
   return (
@@ -74,17 +71,26 @@ export default function Candidat() {
         Rechercher
       </button>
 
+      {showLodadingSpinner ? (
+        <div className="spinner-border" role="status">
+          <span className="visually-hidden">Loading...</span>
+        </div>
+      ) : null}
+
       {avisRecupere.map((avis, index) => (
-          <Card
-            key={index}
-            avis={avis.avis}
-            note={avis.note}
-            date={avis.date}
-            nom={candidatRecupere[0].nom}
-            prenom={candidatRecupere[0].prenom}
-            code={candidatRecupere[0].code_candidat}
-          />
-        ))}
+        <Card
+          key={index}
+          avis={avis.avis}
+          note={avis.note}
+          date={avis.date}
+          nom={candidatRecupere[0].nom}
+          prenom={candidatRecupere[0].prenom}
+          code={candidatRecupere[0].code_candidat}
+          agence_nom={avis.agence_nom || "default name"}
+          tel={avis.agence_tel || "default tel"}
+
+        />
+      ))}
     </div>
   );
 }

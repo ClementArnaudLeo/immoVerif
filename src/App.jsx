@@ -1,4 +1,5 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import './app.css';
 import Accueil from './components/Accueil';
 import AjouterCandidat from './components/AjouterCandidat';
 import Candidat from './components/Candidat';

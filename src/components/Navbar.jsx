@@ -6,10 +6,8 @@ import { IoIosLogOut } from "react-icons/io";
 import { Link, useNavigate } from "react-router-dom";
 import { auth } from "../firebase-config";
 
-
-
 export default function Navbar() {
-const navigate = useNavigate();
+  const navigate = useNavigate();
   const hadnelSignOut = async () => {
     try {
       await signOut(auth);
@@ -17,7 +15,7 @@ const navigate = useNavigate();
     } catch (error) {
       alert(" erreur lors de la decconnexion : " + error);
     }
-    navigate('/');
+    navigate("/");
   };
   return (
     <nav className="d-flex justify-content-between w-75 mx-auto" id="navbar">
@@ -33,7 +31,9 @@ const navigate = useNavigate();
           <BsFillEnvelopeFill /> Espace personnel
         </Link>
         <button
-          className={"btn btn-outline-danger ms-2"}
+          className={
+            "btn btn-outline-danger ms-2 " + (auth.currentUser ? "" : "d-none")
+          }
           onClick={hadnelSignOut}
         >
           <IoIosLogOut /> Deconnexion

@@ -22,7 +22,8 @@ function Accueil() {
         </Link>
         <Link
           to="/candidat"
-          className="btn btn-lg btn-outline-primary d-block  w-25 mx-auto mt-3  fw-bold"
+          className=" d-block text-underline fs-4   w-25 mx-auto mt-3  fw-bold"
+          style={{ color : ' rgb(82, 79, 79)'}}
         >
           Candidat ?
         </Link>
