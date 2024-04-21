@@ -7,7 +7,7 @@ function MentionsLegales() {
 
       <div>
         <h2>Informations légales</h2>
-        <p>Dénomination sociale : ImmoCertif</p>
+        <p>Dénomination sociale : ImmoVerif</p>
         <p>Siège social : 12, rue de Dreux – 27810 Marcilly-Sur-Eure</p>
         <p>Téléphone : 06 69 72 75 73</p>
         <p>SA au capital de 100 euros.</p>

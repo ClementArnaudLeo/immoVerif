@@ -4,12 +4,12 @@ import { Link } from "react-router-dom";
 
 function Accueil() {
   return (
-    <div className="container text-center w-50"  style={{minHeight: "64vh" }}>
-      <h1 className=" fw-bold mt-5 " style={{ fontSize : "4rem"}}>
+    <div className="container text-center"  style={{minHeight: "64vh", width : "60%" }}>
+      <h1 className=" fw-bold " style={{ fontSize : "4rem", marginTop : "13rem"}}>
         Verifiez les <span className="text-primary">antécedants</span> de vos
         <span className="text-primary"> candidats locataires</span>.
       </h1>
-      <h4 className="fs-4 mt-4 w-50 mx-auto">
+      <h4 className="fs-4 mt-4 mx-auto w-50" >
         Louez en toute confiance et accedez aux antécedants de vos candidats en
         un clic.
       </h4>

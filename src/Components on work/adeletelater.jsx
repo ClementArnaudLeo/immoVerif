@@ -55,7 +55,7 @@ function Register (){
 }
 
 /*
-employé immoCertif : 
+employé ImmoVerif : 
 ouvre la db des tickets / depuis espace admin get le dernier ticket : getDB(collec("tickets"))
 regarde si le paiment stripe avec le meme siret a ete effectué 
 creer le compte : createAccountWithEmailAndPassword(email, 123456789)

@@ -7,6 +7,7 @@ function Connexion() {
   const navigate = useNavigate();
   const [mail, setmail] = useState('test@mail.com');
   const [password, setPassword] = useState('123456');
+  const [passwordre, setPasswordre] = useState('123456');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -24,7 +25,7 @@ function Connexion() {
 
   return (
     <div style={{ minHeight: '64vh' }}>
-      <div className='container w-25 text-primary border border-primary border-1 rounded p-3 mt-5 '>
+      <div className='container w-25 text-primary border border-primary border-3 rounded p-3 '  style={{ marginTop: '22vh' }}>
         <h1>Connexion</h1>
         <form onSubmit={handleSubmit}>
           <div className='mb-3'>

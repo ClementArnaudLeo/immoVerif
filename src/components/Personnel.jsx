@@ -13,7 +13,9 @@ import { IoCloudDownloadOutline, IoPersonAddSharp } from "react-icons/io5";
 import { Link, redirect, useNavigate } from "react-router-dom";
 import { auth, db } from "../firebase-config";
 
+
 export default function Personnel() {
+  const [nbAleatoire, setNbAleatoire] = useState('');
   const navigate = useNavigate();
   const [siret, setSiret] = useState("");
   const [adresse, setAdresse] = useState("");
@@ -36,6 +38,14 @@ export default function Personnel() {
   const openModal = () => {
     setModal(true);
   };
+
+  const genereNombreAleatoire = () => {
+    const min = 100000;
+    const max = 999999;
+    setNbAleatoire(Math.floor(Math.random() * (max - min + 1)) + min);
+  };
+
+
 
   const fetchData = async () => {
     if (!auth?.currentUser?.uid) {
@@ -113,11 +123,13 @@ export default function Personnel() {
   };
 
   return (
-    <div className="container mt-5">
-      <h1 className="mt-4 fw-bold text-center text-primary">
+    <div className="container mt-5" style={{ marginBottom: "12vh" }}>
+      <h1 className="mt-4 fw-bold text-center text-primary" >
         Espace Personnel
       </h1>
       <div className="w-50 m-auto mt-5">
+        <h2 className="text-primary fw-bold" style={{ marginBottom: "6vh" }}>Informations personnelles</h2>
+        
         {candidats.map((candidat, index) => (
           <div key={index}>
             <p>
@@ -154,19 +166,11 @@ export default function Personnel() {
                 onClick={openModal}
               />
             </p>
-            <p>
-              <span className="text-primary"> Source</span> :
-              <a
-                href={`https://annuaire-entreprises.data.gouv.fr/etablissement/${candidat.siret}`}
-              >
-                {" "}
-                https://annuaire-entreprises.data.gouv.fr/etablissement/
-                {candidat.siret}
-              </a>
-            </p>
-            <button className="btn btn-sm btn-outline-primary">
-              Formulaire création de compte <IoCloudDownloadOutline />
-            </button>
+            
+            <button onClick={genereNombreAleatoire} className="btn btn-sm btn-outline-primary">
+              Generer un code candidat 
+            </button>{" "}
+            {nbAleatoire}
           </div>
         ))}
       </div>

@@ -19,16 +19,16 @@ export default function Navbar() {
   };
   return (
     <nav className="d-flex justify-content-between w-75 mx-auto" id="navbar">
-      <Link to="/">
-        <img src="images/logo.png" style={{ width: "200px" }} alt="logo" />
+      <Link to="/" className="mt-2">
+        <img src="images/nouveaulogo.png" style={{ width: "200px" }} alt="logo" />
       </Link>
       <div>
-        <Link className="btn btn-outline-primary" to="/connexion">
-          <AiFillLock /> Connexion
+        <Link className="btn btn-outline-primary border-2 fw-bold " to="/contact">
+           <BsFillEnvelopeFill /> Contact
         </Link>
-        <span className=" text-primary fs-3"> | </span>
-        <Link className="btn btn-primary" to="personnel">
-          <BsFillEnvelopeFill /> Espace personnel
+        <span className=" text-primary fs-3" style={{top:"6px", position:"relative"}}>  | </span>
+        <Link className="btn btn-primary  border-2" to="personnel">
+          <AiFillLock /> Espace personnel
         </Link>
         <button
           className={

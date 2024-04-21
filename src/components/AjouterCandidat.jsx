@@ -44,7 +44,7 @@ export default function Candidat() {
       />
       <input
         className="form-control my-4"
-        type="text"
+        type="date"
         placeholder="naissance"
         onChange={(e) =>
           setCandidat({ ...candidat, naissance: e.target.value })
@@ -52,7 +52,7 @@ export default function Candidat() {
       />
       <input
         className="form-control my-4"
-        type="text"
+        type="number"
         placeholder="code"
         onChange={(e) => setCandidat({ ...candidat, code: e.target.value })}
       />

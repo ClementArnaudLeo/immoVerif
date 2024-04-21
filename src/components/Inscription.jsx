@@ -1,13 +1,21 @@
 import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { set } from 'firebase/database';
 import { collection, deleteDoc, doc, getDoc, setDoc } from 'firebase/firestore';
 import React, { useState } from 'react';
 import { auth, db } from '../firebase-config';
 
 const TestComponent = () => {
   const [mailCherche, setMailCherche] = useState('');
+  const [mdp, setMdp] = useState('');
+  const [mdp2, setMdp2] = useState('');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (mdp !== mdp2) {
+      alert('Les mots de passe ne correspondent pas');
+      return;
+    }
 
     let user_uid;
 
@@ -23,9 +31,7 @@ const TestComponent = () => {
     }
 
     //creer le compte avec le mail de fnaim
-    let randompswd =
-      Math.random().toString(36).substring(2, 15) +
-      Math.random().toString(36).substring(2, 15);
+    let randompswd = mdp;
     createUserWithEmailAndPassword(auth, mailCherche, randompswd)
       .then((userCredential) => {
         user_uid = userCredential.user.uid;
@@ -67,7 +73,7 @@ const TestComponent = () => {
 
   return (
     <div style={{ minHeight: '64vh' }}>
-      <div className='container w-25 text-primary border border-primary border-1 rounded p-3 mt-5 '>
+      <div className='container w-25 text-primary border border-primary border-3 rounded p-3 ' style={{ marginTop: '22vh' }}>
         <h1>Créer un compte</h1>
         <form onSubmit={handleSubmit}>
           <div className='mb-3'>
@@ -78,12 +84,43 @@ const TestComponent = () => {
             <input
               type='text'
               className='form-control mb-3'
-              placeholder='agence@fnaim.fr'
               id='mail'
               onChange={(e) => setMailCherche(e.target.value)}
               required
             />
           </div>
+
+
+          <div className='mb-3'>
+            <label htmlFor='pswd' className='form-label'>
+              Mot de passe :
+            </label>
+            <input
+              type='password'
+              className='form-control mb-3'
+              id='pswd'
+              onChange={(e) => setMdp(e.target.value)}
+              required
+            />
+          </div>
+
+
+
+
+          <div className='mb-3'>
+            <label htmlFor='pswd2' className='form-label'>
+             Confirmer mot de passe :
+            </label>
+            <input
+              type='password'
+              className='form-control mb-3'
+              id='pswd2'
+              onChange={(e) => setMdp2(e.target.value)}
+              required
+            />
+          </div>
+
+
           <button
             type='submit'
             onClick={handleSubmit}

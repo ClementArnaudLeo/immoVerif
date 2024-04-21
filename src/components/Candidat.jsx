@@ -54,20 +54,21 @@ export default function Candidat() {
       className="container text-center text-primary"
       style={{ minHeight: "64vh" }}
     >
-      <h1 className="mt-5 fs-1">
+      <h1 className=" fw-light" style={{ marginTop: "16vh", fontSize:"50px" }}>
         Retrouvez les avis laissés par vos anciens propriétaires
       </h1>
       <input
-        className="form-control mb-2 mt-4 w-25 mx-auto"
+        className="form-control mb-2 mt-5 w-25 mx-auto"
         id="code"
         placeholder="code candidat"
         type="text"
         value={codeDonne}
+
         onChange={(e) => {
           setCodeDonne(e.target.value);
         }}
       />
-      <button className="btn btn-primary mb-4 w-25" onClick={getAvis}>
+      <button className="btn btn-primary mb-5 w-25" onClick={getAvis}>
         Rechercher
       </button>
 

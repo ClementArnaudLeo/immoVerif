@@ -16,9 +16,9 @@ function Card({ note, date, prenom, nom, code, avis, tel, agence_nom }) {
 
   return (
     <>
-      <h1 className="mb-2 text-black text-start ">Avis donné le {date}</h1>
+      <h1 className="mb-2 text-black text-start">Avis donné le {date}</h1>
       <section
-        className="container text-black text-start rounded mb-4 fs-4"
+        className="container text-black text-start rounded mb-4 fs-4  p-2"
         style={{ border: "2px solid ", borderColor: couleurBordure }}
       >
         <div className="w-50 d-inline-block">
@@ -33,7 +33,7 @@ function Card({ note, date, prenom, nom, code, avis, tel, agence_nom }) {
         </div>
         <div className="w-50 d-inline-block">
           <p className="mb-1">
-            <span className="fw-bold text-primary">code </span> : {code}
+            <span className="fw-bold text-primary">code candidat </span> : {code}
           </p>
           <p className="mb-1">
             <span className="fw-bold text-primary">Locataire</span> : {nom}{" "}
@@ -41,7 +41,7 @@ function Card({ note, date, prenom, nom, code, avis, tel, agence_nom }) {
           </p>
         </div>
 
-        <hr className="my-2" />
+        <hr className="my-2 border border-black border-2" />
         <p>
           {note}/5 {smiley} {avis}
         </p>
